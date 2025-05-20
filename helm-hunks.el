@@ -494,7 +494,7 @@ Will `cd' to the git root to make git diff paths align with paths on disk as we'
 (defun helm-hunks-current-buffer ()
   "Helm-hunks entry point current buffer."
   (interactive)
-  (let* ((current-file-relative (file-relative-name (buffer-file-name (current-buffer))))
+  (let* ((current-file-relative (file-relative-name (buffer-file-name (buffer-base-buffer))))
          (helm-hunks--cmd-diffs-single-file (format "%s -- %s" helm-hunks--cmd-diffs current-file-relative))
          (helm-hunks--cmd-file-names-single-file (format "%s -- %s" helm-hunks--cmd-file-names current-file-relative))
          (helm-hunks--cmd-diffs helm-hunks--cmd-diffs-single-file)
@@ -516,7 +516,7 @@ Will `cd' to the git root to make git diff paths align with paths on disk as we'
 (defun helm-hunks-staged-current-buffer ()
   "Helm-hunks entry point staged hunks current buffer."
   (interactive)
-  (let* ((current-file-relative (file-relative-name (buffer-file-name (current-buffer))))
+  (let* ((current-file-relative (file-relative-name (buffer-file-name (buffer-base-buffer))))
          (helm-hunks--is-staged t)
          (helm-hunks--cmd-diffs-staged (format "%s --staged" helm-hunks--cmd-diffs))
          (helm-hunks--cmd-file-names-staged (format "%s --staged" helm-hunks--cmd-file-names))
